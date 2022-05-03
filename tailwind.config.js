@@ -1,7 +1,11 @@
 module.exports = {
-  content: ["./src/**/*.{vue, js, ts}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
+  ],
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [require("flowbite/plugin")],
 };

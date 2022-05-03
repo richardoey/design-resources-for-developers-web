@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+
 import App from "./App.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faFontAwesome } from "@fortawesome/free-brands-svg-icons";
@@ -10,6 +11,9 @@ import { dom } from "@fortawesome/fontawesome-svg-core";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 import Grid from "./pages/Grid.vue";
+
+import './style.css'
+import 'flowbite';
 
 const app = createApp(App);
 const routes = [
