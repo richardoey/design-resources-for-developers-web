@@ -9,6 +9,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { dom } from "@fortawesome/fontawesome-svg-core";
 import { createRouter, createWebHashHistory } from "vue-router";
+import { store } from './store'
 
 import Grid from "./pages/Grid.vue";
 
@@ -25,6 +26,7 @@ const router = createRouter({
   routes,
 });
 
+console.log('check state', store);
 library.add(fab);
 library.add(fas);
 library.add(far);
@@ -32,4 +34,5 @@ library.add(faFontAwesome);
 dom.watch();
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(router);
+app.use(store);
 app.mount("#app");
