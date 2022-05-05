@@ -16,7 +16,6 @@ import Grid from "./pages/Grid.vue";
 import './style.css'
 import 'flowbite';
 
-
 const app = createApp(App);
 const routes = [
   { path: "/category/:category", name: "CategoryDetail", component: Grid },
@@ -26,7 +25,6 @@ const router = createRouter({
   routes,
 });
 
-console.log('check state', store);
 library.add(fab);
 library.add(fas);
 library.add(far);

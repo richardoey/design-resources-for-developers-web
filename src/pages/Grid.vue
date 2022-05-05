@@ -85,12 +85,13 @@ watch(
 async function getCategoryEntries() {
     const categoryName = route.params.category;
     const url = `${apiUrl}/api/v1/category/${categoryName}`;
+    document.title = `DRFD | ${categoryName}`
+
     await fetch(url)
         .then(response => response.json())
         .then(data => {
             categoryEntries.value = data.entries.websites.slice(0, entriesPerPage.value)
             showLoadingSpinner.value = false;
-
         });
 }
 
@@ -101,12 +102,8 @@ const goToPage = async (page) => {
         .then(response => response.json())
         .then(data => {
             let startIndex = entriesPerPage.value * page;
-            console.log('check startIndex', startIndex)
-            console.log('check length',);
             categoryEntries.value = data.entries.websites.slice(startIndex, startIndex + entriesPerPage.value)
-            console.log('check entries', categoryEntries.value)
             showLoadingSpinner.value = false;
-
         });
 }
 
