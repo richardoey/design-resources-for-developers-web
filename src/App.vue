@@ -1,10 +1,12 @@
 <template>
   <Navbar />
-  <Layout/>
+  <Sidebar/>
 </template>
 
 <script setup>
 import Navbar from './components/Navbar.vue';
-import Layout from './pages/Layout.vue';
+import Sidebar from './components/Sidebar.vue';
+
+
 
 </script>
