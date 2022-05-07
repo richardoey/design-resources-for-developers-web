@@ -8,7 +8,7 @@ const routes = [
     name: "BaseLayout",
     component: BaseLayout,
     children: [
-      { path: "/category/:category", name: "CategoryDetail", component: CategoryDetail },
+      { path: "/category/:category/:pageNumber", name: "CategoryDetail", component: CategoryDetail },
     ],
   },
 ];

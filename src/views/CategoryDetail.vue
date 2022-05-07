@@ -26,31 +26,12 @@
         </div>
         <nav aria-label="Page navigation example">
             <ul class="inline-flex -space-x-px">
-                <li>
-                    <a href="#" aria-current="page"
-                        class="py-2 px-3 ml-0 leading-tight text-blue-600  bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                <li v-for="index in pageAmount">
+                    <router-link :to="`/category/${route.params.category}/${index}`"
+                        :class="['py-2 px-3 ml-0 leading-tight bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white', index === 1 ? 'rounded-l-lg' : index === pageAmount ? 'rounded-r-lg' : '', index === currPageNumber ? 'text-blue-600' : 'text-gray-500']">
+                        {{ index }}</router-link>
                 </li>
 
-                <li>
-                    <a href="#"
-                        class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="py-2 px-3 text-gray-500 bg-white border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                </li>
             </ul>
         </nav>
     </div>
@@ -64,9 +45,11 @@ import { apiUrl } from "../config";
 
 const route = useRoute()
 const showLoadingSpinner = ref(false);
+const currPageNumber = ref(0);
 
 let categoryEntries = ref([]);
 let entriesPerPage = ref(10);
+let pageAmount = ref(0);
 
 onMounted(() => {
     showLoadingSpinner.value = true;
@@ -77,32 +60,24 @@ watch(
     () => route.params,
     (toParams, previousParams) => {
         showLoadingSpinner.value = true;
-
+        currPageNumber.value = parseInt(route.params.pageNumber);
         getCategoryEntries();
     }
 )
 
 async function getCategoryEntries() {
     const categoryName = route.params.category;
+    const pageNumber = route.params.pageNumber;
+
     const url = `${apiUrl}/api/v1/category/${categoryName}`;
     document.title = `DRFD | ${categoryName}`
 
     await fetch(url)
         .then(response => response.json())
         .then(data => {
-            categoryEntries.value = data.entries.websites.slice(0, entriesPerPage.value)
-            showLoadingSpinner.value = false;
-        });
-}
-
-const goToPage = async (page) => {
-    const categoryName = route.params.category;
-    const url = `${apiUrl}/api/v1/category/${categoryName}`;
-    await fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            let startIndex = entriesPerPage.value * page;
+            let startIndex = pageNumber === 1 ? 0 : entriesPerPage.value * pageNumber;
             categoryEntries.value = data.entries.websites.slice(startIndex, startIndex + entriesPerPage.value)
+            pageAmount.value = parseInt(data.entries.websites.length / entriesPerPage.value)
             showLoadingSpinner.value = false;
         });
 }

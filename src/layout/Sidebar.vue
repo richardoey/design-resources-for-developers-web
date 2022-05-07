@@ -14,7 +14,7 @@
                     <ul class="py-1 list-unstyled fw-normal small">
                         <li @click="changeCurrCategoryName(category.category)" v-for="category in categories"
                             :class="['py-2 transition-colors duration-200 relative block', category.category === currCategoryName ? 'text-blue-700 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-500' : 'hover:text-gray-900 text-gray-500 dark:text-gray-400 dark:hover:text-white']">
-                            <router-link :to="`/category/${category.category}`">{{ category.category }}
+                            <router-link :to="`/category/${category.category}/1`">{{ category.category }}
                             </router-link>
                         </li>
                     </ul>
