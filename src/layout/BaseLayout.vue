@@ -1,7 +1,7 @@
 <template>
   <Navbar/>
 
-    <div class="w-full px-4 mx-auto max-w-8xl">
+    <div class="w-full mx-auto max-w-8xl">
         <div class="lg:flex">
             <Sidebar />
             <ContentWrapper />
