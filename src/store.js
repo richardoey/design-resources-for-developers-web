@@ -4,16 +4,16 @@ import { createStore } from "vuex";
 export const store = createStore({
   state() {
     return {
-      isMobileShowSidebar: false,
+      showSidebar: false,
       currCategoryName: "",
     };
   },
   mutations: {
-    toggleIsMobileShowSidebar(state) {
-      if (!state.isMobileShowSidebar) {
-        state.isMobileShowSidebar = true;
+    toggleShowSidebar(state) {
+      if (!state.showSidebar) {
+        state.showSidebar = true;
       } else {
-        state.isMobileShowSidebar = false;
+        state.showSidebar = false;
       }
     },
     changeCurrCategoryName(state, categoryName) {

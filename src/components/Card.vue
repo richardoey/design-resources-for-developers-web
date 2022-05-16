@@ -1,4 +1,5 @@
 <template>
+
     <div class="mr-10">
         <a href="#"
             class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -6,9 +7,9 @@
                 alt="">
             <div class="flex flex-col justify-between p-4 leading-normal">
                 <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ entryName }}</h5>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ entryDescription }}</p>
-                    <div class="flex flex-row-reverse">
-                        <a target="blank" :href="entry.link"
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ entryDescription }}</p>
+                <div class="flex flex-row-reverse">
+                    <a target="blank" :href="entry.link"
                         class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         View Page
                         <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
@@ -18,7 +19,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </a>
-                    </div>
+                </div>
             </div>
         </a>
     </div>

@@ -1,6 +1,6 @@
 <template>
     <aside aria-label="Sidebar"
-        :class="['fixed inset-0 z-20 flex-none h-full w-56 lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-52 lg:block', isMobileShowSidebar ? '' : 'hidden']">
+        class="fixed inset-0 z-20 flex-none h-full w-56 lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-52 lg:block transition duration-200" :class="[showSidebar ? '' : 'hidden']">
         <div id="navWrapper"
             class="overflow-hidden overflow-y-auto z-20 h-full bg-white scrolling-touch max-w-2xs lg:h-screen lg:block lg:sticky top:24 lg:top-12 dark:bg-gray-900 lg:mr-0">
             <nav id="nav"
@@ -22,7 +22,7 @@
             </nav>
         </div>
     </aside>
-    <div :class="['fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/60 ', isMobileShowSidebar ? '' : 'hidden']"
+    <div :class="['fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/60 ', showSidebar ? '' : 'hidden']"
         id="sidebarBackdrop"></div>
 </template>
 
@@ -32,7 +32,7 @@ import { useStore } from 'vuex';
 import { apiUrl } from '../config';
 
 const store = useStore();
-const isMobileShowSidebar = computed(() => store.state.isMobileShowSidebar);
+const showSidebar = computed(() => store.state.showSidebar);
 
 let categories = ref([]);
 

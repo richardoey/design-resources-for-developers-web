@@ -54,11 +54,11 @@ const toggleSidebarClick = () => {
     if (!isHamburgerHidden.value) {
         isMobileCloseHidden.value = false
         isHamburgerHidden.value = true
-        store.commit('toggleIsMobileShowSidebar');
+        store.commit('toggleShowSidebar');
     } else {
         isMobileCloseHidden.value = true
         isHamburgerHidden.value = false
-        store.commit('toggleIsMobileShowSidebar');
+        store.commit('toggleShowSidebar');
     }
 }
 </script>
