@@ -54,7 +54,7 @@ const getCategories = async () => {
     await fetch(url)
         .then(response => response.json())
         .then(data => {
-            categories.value = data.categories
+            categories.value = data.categories.entries
         });
 }
 
