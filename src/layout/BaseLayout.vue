@@ -1,6 +1,5 @@
 <template>
   <Navbar/>
-
     <div class="w-full mx-auto max-w-8xl">
         <div class="lg:flex">
             <Sidebar />
