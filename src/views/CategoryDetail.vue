@@ -80,7 +80,7 @@ async function getCategoryEntries() {
     await fetch(url)
         .then(response => response.json())
         .then(data => {
-            if (data.entries.websites.length < 10) entriesPerPage.value = data.entries.websites.length
+            if (data.entries !== undefined && data.entries.websites.length < 10) entriesPerPage.value = data.entries.websites.length
             let startIndex = pageNumber === 1 ? 0 : entriesPerPage.value * pageNumber;
             categoryEntries.value = data.entries.websites.slice(startIndex, startIndex + entriesPerPage.value)
             pageAmount.value = parseInt(data.entries.websites.length / entriesPerPage.value)
