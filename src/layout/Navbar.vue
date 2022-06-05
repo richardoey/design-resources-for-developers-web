@@ -30,7 +30,7 @@
                 <ul id="flowbiteMenu" class="flex-col hidden pt-6 lg:flex-row lg:self-center lg:py-0 lg:flex">
                     <li class="mb-3 lg:px-2 xl:px-3 lg:mb-0">
                         <a target="_blank" href="https://github.com/richardoey/design-resources-for-developers-web">
-                            <font-awesome-icon size="xl" :icon="['fab', 'github']" />
+                            <font-awesome-icon :icon="['fab', 'github']" />
                         </a>
                     </li>
                     <li class="mb-3 lg:px-2 xl:px-3 lg:mb-0">
