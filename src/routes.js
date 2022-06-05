@@ -3,12 +3,18 @@ import CategoryDetail from "./views/CategoryDetail.vue";
 import SearchResult from "./views/SearchResult.vue";
 import BaseLayout from "./layout/BaseLayout.vue";
 import HomePage from './pages/HomePage.vue';
+import ContributingPage from './pages/ContributingPage.vue';
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: HomePage,
+  },
+  {
+    path: "/contributing",
+    name: "Contributing",
+    component: ContributingPage,
   },
   {
     path: "/category",

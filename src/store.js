@@ -6,7 +6,7 @@ export const store = createStore({
     return {
       showSidebar: false,
       currCategoryName: "",
-      searchResultState: []
+      searchResultState: [],
     };
   },
   mutations: {
@@ -21,7 +21,7 @@ export const store = createStore({
       state.currCategoryName = categoryName;
     },
     mutateSearchResult(state, searchRes) {
-      state.searchResultState = searchRes
-    }
+      state.searchResultState = searchRes;
+    },
   },
 });

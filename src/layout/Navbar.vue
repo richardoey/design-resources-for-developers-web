@@ -34,7 +34,7 @@
                         </a>
                     </li>
                     <li class="mb-3 lg:px-2 xl:px-3 lg:mb-0">
-                        <a>Contributing</a>
+                        <router-link to="/contributing">Contributing</router-link>
                     </li>
                 </ul>
             </div>
