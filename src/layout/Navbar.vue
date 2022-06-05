@@ -41,7 +41,7 @@
           </svg>
         </button>
         <div class="flex items-center justify-between">
-          <a href="https://flowbite.com" class="flex">
+          <a href="https://design-resources-for-developers-web.onrender.com/" class="flex">
             <span
               class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
               >Design Resources for Developers</span
