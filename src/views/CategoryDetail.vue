@@ -22,6 +22,16 @@
   <!-- end loading spinner -->
 
   <div v-if="!showLoadingSpinner">
+    <div class="pb-4 mb-10 border-b border-gray-200 dark:border-gray-800">
+      <h1
+        class="inline-block mb-2 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+      >
+        {{ categoryName }}
+      </h1>
+      <p class="mb-4 text-lg text-gray-500 dark:text-gray-400">
+        {{ categoryDescription }}
+      </p>
+    </div>
     <div class="flex flex-wrap">
       <div
         class="mb-10 basis-2/4"
@@ -70,6 +80,8 @@ import { apiUrl } from "../config";
 const route = useRoute();
 const showLoadingSpinner = ref(false);
 const currPageNumber = ref(0);
+const categoryDescription = ref("");
+const categoryName = ref("");
 
 let categoryEntries = ref([]);
 let entriesPerPage = ref(10);
@@ -91,16 +103,19 @@ watch(
 );
 
 async function getCategoryEntries() {
-  const categoryName = route.params.category;
+  categoryName.value = route.params.category;
   const pageNumber = parseInt(route.params.pageNumber);
 
-  const url = `${apiUrl}/api/v1/category/${categoryName}`;
-  document.title = `DRFD | ${categoryName}`;
+  const url = `${apiUrl}/api/v1/category/${categoryName.value}`;
+  document.title = `DRFD | ${categoryName.value}`;
 
   await fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      if (data.entries !== undefined && data.entries.websites.length < 10)
+      if (data.description) {
+        categoryDescription.value = data.description;
+      }
+      if (data.entries.websites.length < 10)
         entriesPerPage.value = data.entries.websites.length;
       let startIndex = pageNumber === 1 ? 0 : entriesPerPage.value * pageNumber;
       categoryEntries.value = data.entries.websites.slice(
