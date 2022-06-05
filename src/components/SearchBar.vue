@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-lg mx-auto mt-10 bg-transparent border rounded-md dark:border-gray-700 focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300 dark:focus-within:border-blue-300 focus-within:ring-opacity-40"
+    class="md:max-lg bg-transparent border rounded-md dark:border-gray-700 focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300 dark:focus-within:border-blue-300 focus-within:ring-opacity-40"
   >
     <div class="flex flex-col md:flex-row">
       <!-- Menu toggle button -->
@@ -61,14 +61,15 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted} from "vue";
 import { apiUrl } from "../config";
 import { onClickOutside } from "@vueuse/core";
 import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 const store = useStore();
 const router = useRouter();
+const route = useRoute();
 const isFilterHidden = ref(true);
 const searchRes = ref("");
 const filterArr = ["Name", "Link", "Description", "Category"];
@@ -80,6 +81,22 @@ onClickOutside(filterButton, () => {
   if (!isFilterHidden.value) isFilterHidden.value = true;
 });
 
+onMounted(() => {
+  searchApi();
+});
+
+const searchApi = async () => {
+  const filterRoute = route.params.filter;
+  const keywordRoute = route.params.keyword;
+
+  const url = `${apiUrl}/api/v1/search/${filterRoute.toLowerCase()}/${keywordRoute.toLowerCase()}`;
+  await fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      searchRes.value = data;
+      store.commit("mutateSearchResult", searchRes.value);
+    });
+};
 const search = async () => {
   const url = `${apiUrl}/api/v1/search/${chosenFilter.value.toLowerCase()}/${keyword.value.toLowerCase()}`;
   await fetch(url)

@@ -59,14 +59,14 @@
           Curated list of design and UI resources from stock photos, web
           templates, CSS frameworks, UI libraries, tools and much
         </p>
-
-       <SearchBar/>
+        <div class="mx-auto mt-10">
+          <SearchBar />
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import SearchBar from '../components/SearchBar.vue';
-
+import SearchBar from "../components/SearchBar.vue";
 </script>
