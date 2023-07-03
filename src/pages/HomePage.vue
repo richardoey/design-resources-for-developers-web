@@ -41,7 +41,7 @@
         </a>
         <a
           class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
-          href="https://github.com/bradtraversy/design-resources-for-developers#design-inspiration"
+          href="https://github.com/bradtraversy/design-resources-for-developers/blob/master/contributing.md"
           >Contributing</a
         >
       </div>
