@@ -50,14 +50,14 @@ const entryNameMaxLength = 15;
 const entryDesciptionMaxLength = 100;
 
 const entryName = computed(() => {
-  return props.entry.name.length > entryNameMaxLength
-    ? `${props.entry.name.substring(0, entryNameMaxLength)} ...`
-    : props.entry.name;
+  return props.entry?.name?.length > entryNameMaxLength
+    ? `${props.entry?.name?.substring(0, entryNameMaxLength)} ...`
+    : props.entry?.name;
 });
 
 const entryDescription = computed(() => {
-  return props.entry.description.length > entryDesciptionMaxLength
-    ? `${props.entry.description.substring(0, entryDesciptionMaxLength)} ...`
-    : props.entry.description;
+  return props.entry?.description?.length > entryDesciptionMaxLength
+    ? `${props.entry?.description?.substring(0, entryDesciptionMaxLength)} ...`
+    : props.entry?.description;
 });
 </script>

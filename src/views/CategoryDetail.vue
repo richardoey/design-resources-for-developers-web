@@ -115,14 +115,16 @@ async function getCategoryEntries() {
       if (data.description) {
         categoryDescription.value = data.description;
       }
+      
       if (data.entries.websites.length < 10)
         entriesPerPage.value = data.entries.websites.length;
-      let startIndex = pageNumber === 1 ? 0 : entriesPerPage.value * pageNumber;
+
+      let startIndex = pageNumber === 1 ? 0 : (entriesPerPage.value * pageNumber) - entriesPerPage;
       categoryEntries.value = data.entries.websites.slice(
         startIndex,
         startIndex + entriesPerPage.value
       );
-      pageAmount.value = parseInt(
+      pageAmount.value = Math.ceil(
         data.entries.websites.length / entriesPerPage.value
       );
       showLoadingSpinner.value = false;
