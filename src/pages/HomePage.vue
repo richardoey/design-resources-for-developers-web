@@ -35,7 +35,7 @@
       >
         <a
           class="text-gray-700 lg:mx-6 dark:text-gray-200 dark:hover:text-blue-400 hover:text-blue-500"
-          href="#"
+          href="https://github.com/richardoey/design-resources-for-developers-web"
         >
           <font-awesome-icon :icon="['fab', 'github']" />
         </a>
