@@ -52,7 +52,7 @@
       <input
         @keyup.enter="search"
         type="text"
-        placeholder="Search"
+        placeholder="Press Enter after type to search"
         v-model="keyword"
         class="flex-1 h-10 px-4 py-2 m-1 text-gray-700 placeholder-gray-400 bg-transparent border-none appearance-none dark:text-gray-200 focus:outline-none focus:placeholder-transparent focus:ring-0"
       />
@@ -86,10 +86,10 @@ onMounted(() => {
 });
 
 const searchApi = async () => {
-  const filterRoute = route.params.filter;
-  const keywordRoute = route.params.keyword;
+  const filterRoute = route.params?.filter;
+  const keywordRoute = route.params?.keyword;
 
-  const url = `${apiUrl}/api/v1/search/${filterRoute.toLowerCase()}/${keywordRoute.toLowerCase()}`;
+  const url = `${apiUrl}/api/v1/search/${filterRoute?.toLowerCase()}/${keywordRoute?.toLowerCase()}`;
   await fetch(url)
     .then((response) => response.json())
     .then((data) => {
