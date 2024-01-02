@@ -1,6 +1,7 @@
 "use client"
 
 import { Group, Card, Image, Text, Badge, Button, Grid } from '@mantine/core';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function CategoryEntryPage({ params }: { params: { slug: string, pageNumber: number } }) {
@@ -51,7 +52,7 @@ export default function CategoryEntryPage({ params }: { params: { slug: string, 
       <Text size="xl">{category}</Text>
       <Text size="md">{categoryDescription}</Text>
       <Grid>
-        {categoryEntries?.map(entry => 
+        {categoryEntries?.map(entry =>
           <Grid.Col span={4}><ResourceDetail name={entry.name} description={entry.description} link={entry.link} /></Grid.Col>
         )}
       </Grid>
@@ -59,7 +60,8 @@ export default function CategoryEntryPage({ params }: { params: { slug: string, 
   );
 }
 
-function ResourceDetail({ name, description, link}) {
+function ResourceDetail({ name, description, link }) {
+
   return (
     <>
       <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -71,9 +73,15 @@ function ResourceDetail({ name, description, link}) {
           {description}
         </Text>
 
-        <Button color="blue" fullWidth mt="md" radius="md" >
-          Visit Page
-        </Button>
+        <a
+          target="_blank"
+          href={link}
+          style={{ textDecoration: 'none' }}
+        >
+          <Button color="blue" fullWidth mt="md" radius="md" >
+            Visit Page
+          </Button>
+        </a>
       </Card>
     </>
   );
