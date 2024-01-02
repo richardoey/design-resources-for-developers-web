@@ -1,6 +1,6 @@
 {
-  "name": "mantine-next-template",
-  "version": "1.0.0",
+  "name": "design-resources-for-developers-nextjs",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -18,8 +18,9 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
-    "@mantine/core": "7.2.1",
-    "@mantine/hooks": "7.2.1",
+    "@mantine/core": "^7.3.2",
+    "@mantine/ds": "^7.2.2",
+    "@mantine/hooks": "^7.3.2",
     "@next/bundle-analyzer": "^14.0.1",
     "@tabler/icons-react": "^2.40.0",
     "next": "14.0.1",
